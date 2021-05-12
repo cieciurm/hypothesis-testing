@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HypothesisTesting.Adapters.AccordNET\HypothesisTesting.Adapters.AccordNET.csproj" />
+    <ProjectReference Include="..\HypothesisTesting.Domain\HypothesisTesting.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
