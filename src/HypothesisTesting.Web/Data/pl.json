@@ -1,0 +1,24 @@
+{
+  "XValue": "Wartości X",
+  "YValue": "Wartości Y",
+  "SampleType": "Czy cechy powiązane",
+  "Paired": "powiązane",
+  "Independent": "niepowiązane",
+  "ScaleMeasure": "Skala cechy",
+  "Nominal": "nominalna",
+  "Interval": "przedziałowa",
+  "Ordinal": "porządkowa",
+  "Submit": "Oblicz",
+
+  "DistributionTestMethod": "Liczebność próby {0} => wybrano test {1}",
+  "DistributionTest": "(PValue = {0}) => rozkład normalny: {1}",
+  "SnedecorTestMethod": "Test Snedecora",
+  "SnedecorTest": "(PValue = {0}) => wariancja cech przy 2 warunkach równe: {1}",
+  "ManWhitneyTestMethod": "Test Manna-Whitneya",
+
+  "Error": "Błąd",
+  "StrategyNotFound": "Algorytm nie został znaleziony",
+  "SelectingStrategy": "Wybieram algorytm dla cech: {0} i skali: {1}",
+  "True": "prawda",
+  "False": "fałsz"
+}

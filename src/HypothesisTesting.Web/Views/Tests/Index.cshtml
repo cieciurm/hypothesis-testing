@@ -1,0 +1,107 @@
+﻿@using HypothesisTesting.Domain
+@model TestViewModel
+
+<form id="form">
+    <div class="row">
+        <div class="col-12">
+            @Html.DropDownListFor(x => x.Language, Model.Languages, new { @class = "form-control-sm" })
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-6">
+            <h5>@Model.GetTranslation(WebConstants.Translations.XValue)</h5>
+            @Html.TextAreaFor(x => x.XValues, new { @class = "form-control", rows = 8, cols = 5 })
+        </div>
+        <div class="col-6">
+            <h5>@Model.GetTranslation(WebConstants.Translations.YValue)</h5>
+            @Html.TextAreaFor(x => x.YValues, new { @class = "form-control", rows = 8, cols = 5 })
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-12">
+            <h5>@Model.GetTranslation(WebConstants.Translations.SampleType)</h5>
+            <ul class="list-unstyled">
+                <li>
+                    <label>
+                        @Html.RadioButtonFor(x => x.SamplesType, Constants.SamplesTypes.Paired)
+                        @Model.GetTranslation(WebConstants.Translations.Paired)
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        @Html.RadioButtonFor(x => x.SamplesType, Constants.SamplesTypes.Independent)
+                        @Model.GetTranslation(WebConstants.Translations.Independent)
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-12">
+            <h5>@Model.GetTranslation(WebConstants.Translations.ScaleMeasure)</h5>
+            <ul class="list-unstyled">
+                <li>
+                    <label>
+                        @Html.RadioButtonFor(x => x.ScaleMeasure, Constants.ScaleMeasures.Nominal)
+                        @Model.GetTranslation(WebConstants.Translations.Nominal)
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        @Html.RadioButtonFor(x => x.ScaleMeasure, Constants.ScaleMeasures.Interval)
+                        @Model.GetTranslation(WebConstants.Translations.Interval)
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        @Html.RadioButtonFor(x => x.ScaleMeasure, Constants.ScaleMeasures.Ordinal)
+                        @Model.GetTranslation(WebConstants.Translations.Ordinal)
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-success" value="@Model.GetTranslation(WebConstants.Translations.Submit)" />
+</form>
+
+<hr />
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div id="results">
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(function() {
+            $("#@nameof(TestViewModel.Language)").change(function () {
+                var lang = $("#@nameof(TestViewModel.Language)").val();
+
+                var url = "@Url.Action("Index")";
+                location.href = url + "?language=" + lang;
+            });
+
+            $("#form").submit(function(e) {
+                e.preventDefault();
+
+                var viewModel = {
+                    xValues: $("#@nameof(TestViewModel.XValues)").val(),
+                    yValues: $("#@nameof(TestViewModel.YValues)").val(),
+                    scaleMeasure: $("input[name=@nameof(TestViewModel.ScaleMeasure)]:checked").val(),
+                    samplesType: $("input[name=@nameof(TestViewModel.SamplesType)]:checked").val(),
+                    language: $('#@nameof(TestViewModel.Language)').val()
+                };
+
+                $.post("@Url.Action("Submit")", viewModel, function(result) {
+                        $("#results").html(result);
+                    });
+            });
+        });
+    </script>
+}
+

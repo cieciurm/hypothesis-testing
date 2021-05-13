@@ -1,0 +1,27 @@
+﻿@model TestResultViewModel
+
+@if (Model.HasError)
+{
+    <div class="alert alert-danger">
+        @Model.GetTranslation(WebConstants.Translations.Error)
+    </div>
+}
+
+<div class="row">
+    <div class="col-12">
+        <ul>
+            @foreach (var log in Model.Logs)
+            {
+                <li>@log</li>
+            }
+        </ul>
+    </div>
+</div>
+@if (Model.PValue.HasValue)
+{
+    <div class="row">
+        <div class="col-12">
+            <b>pValue</b>: @Model.PValue.Value
+        </div>
+    </div>
+}

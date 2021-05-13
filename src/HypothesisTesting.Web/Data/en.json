@@ -1,0 +1,24 @@
+{
+  "XValue": "X values",
+  "YValue": "Y values",
+  "SampleType": "Are samples paired",
+  "Paired": "paired",
+  "Independent": "indepedent",
+  "ScaleMeasure": "Scale of measure",
+  "Nominal": "nominal",
+  "Interval": "interval",
+  "Ordinal": "ordinal",
+  "Submit": "Calculate",
+
+  "DistributionTestMethod": "Sample size {0} => {1} test chosen",
+  "DistributionTest": "(PValue = {0}) => normal distribution: {1}",
+  "SnedecorTestMethod": "Snedecora Test",
+  "SnedecorTest": "(PValue = {0}) => two samples variance with 2 conditions equal: {1}",
+  "ManWhitneyTestMethod": "Mann-Whitneya Test",
+
+  "Error": "Error",
+  "StrategyNotFound": "Algorithm not found",
+  "SelectingStrategy": "Selecting algorithm for sample type: {0} and scale: {1}",
+  "True": "true",
+  "False": "false"
+}
