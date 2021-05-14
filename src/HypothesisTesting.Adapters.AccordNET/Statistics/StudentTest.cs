@@ -25,11 +25,11 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
 
             if (equalVariance)
             {
-                _executionLogger.AddLog(_translator.Translate(Constants.Translations.TStudentDependentTestMethod));
+                _executionLogger.AddLog(_translator.Translate(Constants.Translations.StudentIndependentWithEqualVariancesTestMethod));
             }
             else
             {
-                _executionLogger.AddLog(_translator.Translate(Constants.Translations.TStudentIndependentTestMethod));
+                _executionLogger.AddLog(_translator.Translate(Constants.Translations.StudentIndependentWithNotEqualVariancesTestMethod));
             }
 
             var t = new TwoSampleTTest(s1, s2, equalVariance);

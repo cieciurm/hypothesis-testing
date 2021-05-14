@@ -3,6 +3,7 @@ using Accord.Statistics.Distributions;
 using Accord.Statistics.Distributions.Univariate;
 using Accord.Statistics.Testing;
 using HypothesisTesting.Domain;
+using HypothesisTesting.Domain.Extensions;
 using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports;
 using HypothesisTesting.Domain.Ports.Translations;
@@ -54,7 +55,7 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
             var isNormal = Settings.IsHypothesisTrue(result.PValue);
             var isNormalText = _translator.Translate(isNormal.ToString());
 
-            var log = _translator.Translate(Constants.Translations.DistributionTest, result.PValue, isNormalText);
+            var log = _translator.Translate(Constants.Translations.DistributionTest, result.PValue.Round(), isNormalText);
             _logger.AddLog(log);
 
             return isNormal;

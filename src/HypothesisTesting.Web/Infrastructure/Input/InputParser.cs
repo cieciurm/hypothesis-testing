@@ -11,9 +11,7 @@ namespace HypothesisTesting.Web.Infrastructure.Input
         {
             var splitted = val.Split(new[] { ',', ';', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
-            var sample = splitted
-                .Select(x => x.Trim())
-                .Select(x => Convert.ToDouble(x, CultureInfo.InvariantCulture));
+            var sample = splitted.Select(x => Convert.ToDouble(x, CultureInfo.InvariantCulture));
 
             return new DataSeries(sample);
         }

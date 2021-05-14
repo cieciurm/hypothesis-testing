@@ -33,18 +33,15 @@ namespace HypothesisTesting.Domain.Strategies
 
             if (!isXNormalDistribution || !isYNormalDistribution)
             {
-                var pValue = _mannWhitneyTest.Calculate(input);
+                var mwPValue = _mannWhitneyTest.Calculate(input);
 
-                return OutputData.Success(pValue);
+                return OutputData.Success(mwPValue);
             }
 
-            if (_snedecorTest.IsVarianceEqual(input))
-            {
-                var pValue = _studentTest.Calculate(input, false);
-                return OutputData.Success(pValue);
-            }
+            var isVarianceEqual = _snedecorTest.IsVarianceEqual(input);
+            var studentPValue = _studentTest.Calculate(input, isVarianceEqual);
 
-            return OutputData.Error();
+            return OutputData.Success(studentPValue);
         }
     }
 }

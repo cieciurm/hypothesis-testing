@@ -1,4 +1,6 @@
-﻿namespace HypothesisTesting.Domain.Models
+﻿using HypothesisTesting.Domain.Extensions;
+
+namespace HypothesisTesting.Domain.Models
 {
     public class OutputData
     {
@@ -6,7 +8,7 @@
 
         public string ErrorText { get; set; }
 
-        public double? PValue { get; set; }
+        public string PValue { get; set; }
 
         public double? Statistics { get; set; }
 
@@ -24,7 +26,7 @@
         public static OutputData Success(double pValue, double? statistics = null) =>
             new OutputData
             {
-                PValue = pValue,
+                PValue = pValue.Round(),
                 Statistics = statistics,
             };
     }

@@ -1,13 +1,18 @@
 ﻿@using HypothesisTesting.Domain
 @model TestViewModel
 
-<form id="form">
-    <div class="row">
-        <div class="col-12">
-            @Html.DropDownListFor(x => x.Language, Model.Languages, new { @class = "form-control-sm" })
-        </div>
+<div class="row">
+    <div class="col-3">
+        <h3>@Model.GetTranslation(WebConstants.Translations.Header)</h3>
     </div>
-    <hr />
+    <div class="col-9">
+        @Html.DropDownListFor(x => x.Language, Model.Languages, new {@class = "form-control-sm"})
+    </div>
+</div>
+
+<hr/>
+
+<form id="form">
     <div class="row">
         <div class="col-6">
             <h5>@Model.GetTranslation(WebConstants.Translations.XValue)</h5>
@@ -18,37 +23,29 @@
             @Html.TextAreaFor(x => x.YValues, new { @class = "form-control", rows = 8, cols = 5 })
         </div>
     </div>
-    <hr />
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-12">
             <h5>@Model.GetTranslation(WebConstants.Translations.SampleType)</h5>
             <ul class="list-unstyled">
-                <li>
-                    <label>
-                        @Html.RadioButtonFor(x => x.SamplesType, Constants.SamplesTypes.Paired)
-                        @Model.GetTranslation(WebConstants.Translations.Paired)
-                    </label>
-                </li>
                 <li>
                     <label>
                         @Html.RadioButtonFor(x => x.SamplesType, Constants.SamplesTypes.Independent)
                         @Model.GetTranslation(WebConstants.Translations.Independent)
                     </label>
                 </li>
+                <li>
+                    <label>
+                        @Html.RadioButtonFor(x => x.SamplesType, Constants.SamplesTypes.Paired)
+                        @Model.GetTranslation(WebConstants.Translations.Paired)
+                    </label>
+                </li>
             </ul>
         </div>
     </div>
-    <hr />
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-12">
             <h5>@Model.GetTranslation(WebConstants.Translations.ScaleMeasure)</h5>
             <ul class="list-unstyled">
-                <li>
-                    <label>
-                        @Html.RadioButtonFor(x => x.ScaleMeasure, Constants.ScaleMeasures.Nominal)
-                        @Model.GetTranslation(WebConstants.Translations.Nominal)
-                    </label>
-                </li>
                 <li>
                     <label>
                         @Html.RadioButtonFor(x => x.ScaleMeasure, Constants.ScaleMeasures.Interval)
@@ -59,6 +56,12 @@
                     <label>
                         @Html.RadioButtonFor(x => x.ScaleMeasure, Constants.ScaleMeasures.Ordinal)
                         @Model.GetTranslation(WebConstants.Translations.Ordinal)
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        @Html.RadioButtonFor(x => x.ScaleMeasure, Constants.ScaleMeasures.Nominal)
+                        @Model.GetTranslation(WebConstants.Translations.Nominal)
                     </label>
                 </li>
             </ul>

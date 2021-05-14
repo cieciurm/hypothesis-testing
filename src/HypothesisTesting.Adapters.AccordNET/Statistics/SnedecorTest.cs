@@ -1,6 +1,7 @@
 ﻿using Accord.Statistics;
 using Accord.Statistics.Testing;
 using HypothesisTesting.Domain;
+using HypothesisTesting.Domain.Extensions;
 using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Statistics;
 using HypothesisTesting.Domain.Ports.Translations;
@@ -33,7 +34,7 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
 
             _executionLogger.AddLog(_translator.Translate(Constants.Translations.SnedecorTestMethod));
             var @true = _translator.Translate(isVarianceEqual.ToString());
-            _executionLogger.AddLog(_translator.Translate(Constants.Translations.SnedecorTest, f.PValue, @true));
+            _executionLogger.AddLog(_translator.Translate(Constants.Translations.SnedecorTest, f.PValue.Round(), @true));
 
             return isVarianceEqual;
         }

@@ -4,6 +4,7 @@
     {
         public static class Translations
         {
+            public const string Header = nameof(Header);
             public const string XValue = nameof(XValue);
             public const string YValue = nameof(YValue);
             public const string SampleType = nameof(SampleType);

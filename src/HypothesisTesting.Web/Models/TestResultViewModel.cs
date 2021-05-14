@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Translations;
 using HypothesisTesting.Domain.Services;
@@ -7,11 +8,11 @@ namespace HypothesisTesting.Web.Models
 {
     public class TestResultViewModel : BaseViewModel
     {
-        public IEnumerable<string> Logs { get; set; }
+        public IList<string> Logs { get; set; }
 
         public bool HasError { get; set; }
 
-        public double? PValue { get; set; }
+        public string PValue { get; set; }
 
         public double? Statistics { get; set; }
 
@@ -24,7 +25,7 @@ namespace HypothesisTesting.Web.Models
         {
             var viewModel = new TestResultViewModel(language, translator)
             {
-                Logs = executionLogger.GetLog(),
+                Logs = executionLogger.GetLog().ToList(),
                 HasError = outputData.HasError,
                 PValue = outputData.PValue,
                 Statistics = outputData.Statistics,
@@ -37,7 +38,7 @@ namespace HypothesisTesting.Web.Models
         {
             var viewModel = new TestResultViewModel(language, translator)
             {
-                Logs = executionLogger.GetLog(),
+                Logs = executionLogger.GetLog().ToList(),
                 HasError = true,
             };
 

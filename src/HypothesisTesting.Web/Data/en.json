@@ -1,9 +1,11 @@
 {
+  "Header": "Hypothesis Testing",
+
   "XValue": "X values",
   "YValue": "Y values",
   "SampleType": "Are samples paired",
   "Paired": "paired",
-  "Independent": "indepedent",
+  "Independent": "independent",
   "ScaleMeasure": "Scale of measure",
   "Nominal": "nominal",
   "Interval": "interval",
@@ -11,12 +13,12 @@
   "Submit": "Calculate",
 
   "DistributionTestMethod": "Sample size {0} => {1} test chosen",
-  "DistributionTest": "(PValue = {0}) => normal distribution: {1}",
+  "DistributionTest": "(p-value = {0}) => normal distribution: {1}",
   "SnedecorTestMethod": "Snedecor Test",
-  "SnedecorTest": "(PValue = {0}) => two samples variance with 2 conditions equal: {1}",
+  "SnedecorTest": "(p-value = {0}) => two samples variance with 2 conditions equal: {1}",
   "ManWhitneyTestMethod": "Mann-Whitney Test",
-  "TStudentIndependentTestMethod": "Studenta Test for 2 Independent Means",
-  "TStudentDependentTestMethod": "Studenta Test for 2 Dependent Means",
+  "StudentIndependentWithEqualVariancesTestMethod": "Student Test for 2 independent means with equal variation",
+  "StudentIndependentWithNotEqualVariancesTestMethod": "Student Test for 2 independent means with not equal variation",
 
   "Error": "Error",
   "StrategyNotFound": "Algorithm not found",

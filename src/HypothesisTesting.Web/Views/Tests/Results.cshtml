@@ -10,18 +10,22 @@
 <div class="row">
     <div class="col-12">
         <ul>
-            @foreach (var log in Model.Logs)
+            @for (var i = 0; i < Model.Logs.Count; i++)
             {
-                <li>@log</li>
+                if (i == Model.Logs.Count - 1)
+                {
+                    <li><b>@Model.Logs[i]</b></li>
+                }
+                else
+                {
+                    <li>@Model.Logs[i]</li>
+                }
+            }
+            @if (!string.IsNullOrWhiteSpace(Model.PValue))
+            {
+                <li><b>p-value: @Model.PValue</b></li>
             }
         </ul>
     </div>
 </div>
-@if (Model.PValue.HasValue)
-{
-    <div class="row">
-        <div class="col-12">
-            <b>pValue</b>: @Model.PValue.Value
-        </div>
-    </div>
-}
+

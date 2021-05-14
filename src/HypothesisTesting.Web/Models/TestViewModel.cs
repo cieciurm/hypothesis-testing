@@ -26,11 +26,11 @@ namespace HypothesisTesting.Web.Models
                 new SelectListItem("English", WebConstants.Languages.English),
             };
 
-            SamplesType = Constants.SamplesTypes.Paired;
-            ScaleMeasure = Constants.ScaleMeasures.Nominal;
+            SamplesType = Constants.SamplesTypes.Independent;
+            ScaleMeasure = Constants.ScaleMeasures.Interval;
             Languages = items;
-            XValues = "1\n2\n3\n4\n5";
-            YValues = "6\n7\n8\n9\n10";
+            XValues = "0.63, 1.64, 1.93, -1.03, -1.73, -1.13, 4.72, 0.45, -1.03, -2.31, -0.83, -3.3, -0.02, 3.26, 1.17";
+            YValues = "1.36, 0.63, 4.79, -1.59, 2.72, -1.65, -0.58, 0.76, -2.26, 2.28, -0.19, 2.94, 0.56, -2.97, -2.03, 2.35, -0.25, 1.69, 0.62, 4.2";
         }
     }
 }
