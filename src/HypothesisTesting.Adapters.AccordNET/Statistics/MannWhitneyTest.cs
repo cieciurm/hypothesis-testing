@@ -5,9 +5,9 @@ using HypothesisTesting.Domain.Ports.Statistics;
 using HypothesisTesting.Domain.Ports.Translations;
 using HypothesisTesting.Domain.Services;
 
-namespace HypothesisTesting.Adapters.AccordNET
+namespace HypothesisTesting.Adapters.AccordNET.Statistics
 {
-    public class MannWhitneyTest : IMannWhitneyTest
+    internal class MannWhitneyTest : IMannWhitneyTest
     {
         private readonly IExecutionLogger _executionLogger;
         private readonly ITranslator _translator;

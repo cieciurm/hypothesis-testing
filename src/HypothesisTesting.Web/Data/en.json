@@ -12,9 +12,11 @@
 
   "DistributionTestMethod": "Sample size {0} => {1} test chosen",
   "DistributionTest": "(PValue = {0}) => normal distribution: {1}",
-  "SnedecorTestMethod": "Snedecora Test",
+  "SnedecorTestMethod": "Snedecor Test",
   "SnedecorTest": "(PValue = {0}) => two samples variance with 2 conditions equal: {1}",
-  "ManWhitneyTestMethod": "Mann-Whitneya Test",
+  "ManWhitneyTestMethod": "Mann-Whitney Test",
+  "TStudentIndependentTestMethod": "Studenta Test for 2 Independent Means",
+  "TStudentDependentTestMethod": "Studenta Test for 2 Dependent Means",
 
   "Error": "Error",
   "StrategyNotFound": "Algorithm not found",

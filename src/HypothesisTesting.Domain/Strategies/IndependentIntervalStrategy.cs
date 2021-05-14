@@ -12,15 +12,18 @@ namespace HypothesisTesting.Domain.Strategies
         private readonly INormalDistributionTest _normalDistributionTest;
         private readonly IMannWhitneyTest _mannWhitneyTest;
         private readonly ISnedecorTest _snedecorTest;
+        private readonly IStudentTest _studentTest;
 
         public IndependentIntervalStrategy(
             INormalDistributionTest normalDistributionTest,
             IMannWhitneyTest mannWhitneyTest,
-            ISnedecorTest snedecorTest)
+            ISnedecorTest snedecorTest,
+            IStudentTest studentTest)
         {
             _normalDistributionTest = normalDistributionTest;
             _mannWhitneyTest = mannWhitneyTest;
             _snedecorTest = snedecorTest;
+            _studentTest = studentTest;
         }
 
         public OutputData Execute(InputData input)
@@ -32,15 +35,16 @@ namespace HypothesisTesting.Domain.Strategies
             {
                 var pValue = _mannWhitneyTest.Calculate(input);
 
-                return new OutputData { PValue = pValue };
+                return OutputData.Success(pValue);
             }
 
             if (_snedecorTest.IsVarianceEqual(input))
             {
-
+                var pValue = _studentTest.Calculate(input, false);
+                return OutputData.Success(pValue);
             }
 
-            return new OutputData();
+            return OutputData.Error();
         }
     }
 }

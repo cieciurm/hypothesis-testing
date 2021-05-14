@@ -8,7 +8,7 @@ using HypothesisTesting.Domain.Ports;
 using HypothesisTesting.Domain.Ports.Translations;
 using HypothesisTesting.Domain.Services;
 
-namespace HypothesisTesting.Adapters.AccordNET
+namespace HypothesisTesting.Adapters.AccordNET.Statistics
 {
     internal class NormalDistributionTest : INormalDistributionTest
     {
@@ -51,7 +51,7 @@ namespace HypothesisTesting.Adapters.AccordNET
         private bool IsNormalDistribution<T>(HypothesisTest<T> result)
             where T : IUnivariateDistribution
         {
-            var isNormal = result.PValue >= Settings.Threshold;
+            var isNormal = Settings.IsHypothesisTrue(result.PValue);
             var isNormalText = _translator.Translate(isNormal.ToString());
 
             var log = _translator.Translate(Constants.Translations.DistributionTest, result.PValue, isNormalText);

@@ -6,9 +6,9 @@ using HypothesisTesting.Domain.Ports.Statistics;
 using HypothesisTesting.Domain.Ports.Translations;
 using HypothesisTesting.Domain.Services;
 
-namespace HypothesisTesting.Adapters.AccordNET
+namespace HypothesisTesting.Adapters.AccordNET.Statistics
 {
-    public class SnedecorTest : ISnedecorTest
+    internal class SnedecorTest : ISnedecorTest
     {
         private readonly IExecutionLogger _executionLogger;
         private readonly ITranslator _translator;
@@ -27,9 +27,9 @@ namespace HypothesisTesting.Adapters.AccordNET
             var var1 = s1.Variance();
             var var2 = s2.Variance();
 
-            var f = new FTest(var1, var2, s1.Length - 1, s2.Length - 1);
+            var f = new FTest(var1, var2, s1.Length - 1, s2.Length - 1, TwoSampleHypothesis.ValuesAreDifferent);
 
-            var isVarianceEqual = f.PValue >= Settings.Threshold;
+            var isVarianceEqual = Settings.IsHypothesisTrue(f.PValue);
 
             _executionLogger.AddLog(_translator.Translate(Constants.Translations.SnedecorTestMethod));
             var @true = _translator.Translate(isVarianceEqual.ToString());

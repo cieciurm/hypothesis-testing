@@ -1,4 +1,5 @@
 ﻿using HypothesisTesting.Adapters.AccordNET;
+using HypothesisTesting.Adapters.AccordNET.Extensions;
 using HypothesisTesting.Domain;
 using HypothesisTesting.Domain.Ports.Translations;
 using HypothesisTesting.Domain.Services;

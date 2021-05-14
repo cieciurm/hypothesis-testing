@@ -1,8 +1,9 @@
-﻿using HypothesisTesting.Domain.Ports;
+﻿using HypothesisTesting.Adapters.AccordNET.Statistics;
+using HypothesisTesting.Domain.Ports;
 using HypothesisTesting.Domain.Ports.Statistics;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace HypothesisTesting.Adapters.AccordNET
+namespace HypothesisTesting.Adapters.AccordNET.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -11,6 +12,7 @@ namespace HypothesisTesting.Adapters.AccordNET
             services.AddScoped<INormalDistributionTest, NormalDistributionTest>();
             services.AddScoped<IMannWhitneyTest, MannWhitneyTest>();
             services.AddScoped<ISnedecorTest, SnedecorTest>();
+            services.AddScoped<IStudentTest, StudentTest>();
 
             return services;
         }

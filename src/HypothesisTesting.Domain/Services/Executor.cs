@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using HypothesisTesting.Domain.Models;
-using HypothesisTesting.Domain.Ports;
 using HypothesisTesting.Domain.Ports.Translations;
 using HypothesisTesting.Domain.Strategies;
 
@@ -38,7 +37,7 @@ namespace HypothesisTesting.Domain.Services
             {
                 var notFoundLog = _translator.Translate(Constants.Translations.StrategyNotFound);
                 _logger.AddLog(notFoundLog);
-                return new OutputData { HasError = true };
+                return OutputData.Error();
             }
 
             return strategy.Execute(inputData);

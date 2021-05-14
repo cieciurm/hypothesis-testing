@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using HypothesisTesting.Domain.Models;
 
@@ -10,7 +11,9 @@ namespace HypothesisTesting.Web.Infrastructure.Input
         {
             var splitted = val.Split(new[] { ',', ';', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
-            var sample = splitted.Select(Convert.ToDouble);
+            var sample = splitted
+                .Select(x => x.Trim())
+                .Select(x => Convert.ToDouble(x, CultureInfo.InvariantCulture));
 
             return new DataSeries(sample);
         }

@@ -22,6 +22,8 @@
             public const string SnedecorTestMethod = nameof(SnedecorTestMethod);
             public const string SnedecorTest = nameof(SnedecorTest);
             public const string ManWhitneyTestMethod = nameof(ManWhitneyTestMethod);
+            public const string TStudentIndependentTestMethod = nameof(TStudentIndependentTestMethod);
+            public const string TStudentDependentTestMethod = nameof(TStudentDependentTestMethod);
 
             public const string StrategyNotFound = nameof(StrategyNotFound);
             public const string SelectingStrategy = nameof(SelectingStrategy);
