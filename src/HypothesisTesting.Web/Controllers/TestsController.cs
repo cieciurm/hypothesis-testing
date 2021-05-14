@@ -4,6 +4,7 @@ using HypothesisTesting.Domain.Services;
 using HypothesisTesting.Web.Infrastructure.Input;
 using HypothesisTesting.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace HypothesisTesting.Web.Controllers
 {
@@ -13,13 +14,15 @@ namespace HypothesisTesting.Web.Controllers
         private readonly IExecutionLogger _executionLogger;
         private readonly ITranslator _translator;
         private readonly ILanguageProvider _languageProvider;
+        private readonly IConfiguration _configuration;
 
-        public TestsController(IExecutor executor, IExecutionLogger executionLogger, ITranslator translator, ILanguageProvider languageProvider)
+        public TestsController(IExecutor executor, IExecutionLogger executionLogger, ITranslator translator, ILanguageProvider languageProvider, IConfiguration configuration)
         {
             _executor = executor;
             _executionLogger = executionLogger;
             _translator = translator;
             _languageProvider = languageProvider;
+            _configuration = configuration;
         }
 
         public IActionResult Index(string language)
@@ -27,7 +30,7 @@ namespace HypothesisTesting.Web.Controllers
             language ??= WebConstants.Languages.Polish;
             _languageProvider.SetLanguage(language);
 
-            var viewModel = new TestViewModel(language, _translator);
+            var viewModel = new TestViewModel(language, _translator, _configuration);
 
             return View(viewModel);
         }

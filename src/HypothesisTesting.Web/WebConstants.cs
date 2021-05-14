@@ -4,7 +4,9 @@
     {
         public static class Translations
         {
+            public const string Title = nameof(Title);
             public const string Header = nameof(Header);
+            public const string FlowChart = nameof(FlowChart);
             public const string XValue = nameof(XValue);
             public const string YValue = nameof(YValue);
             public const string SampleType = nameof(SampleType);
@@ -22,6 +24,11 @@
         {
             public const string Polish = "pl";
             public const string English = "en";
+        }
+
+        public static class AppSettingsKeys
+        {
+            public const string FlowChartUrl = nameof(FlowChartUrl);
         }
     }
 }

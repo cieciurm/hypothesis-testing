@@ -1,16 +1,21 @@
 ﻿@using HypothesisTesting.Domain
 @model TestViewModel
 
-<div class="row">
-    <div class="col-3">
-        <h3>@Model.GetTranslation(WebConstants.Translations.Header)</h3>
-    </div>
-    <div class="col-9">
+@{
+    ViewData[WebConstants.Translations.Title] = Model.GetTranslation(WebConstants.Translations.Header);
+}
+
+<div class="row mb-3">
+    <div class="col-12">
         @Html.DropDownListFor(x => x.Language, Model.Languages, new {@class = "form-control-sm"})
     </div>
 </div>
 
-<hr/>
+<div class="row alert alert-info">
+    <div class="col-12">
+        <a href="@Model.FlowChartUrl" target="_blank">@Model.GetTranslation(WebConstants.Translations.FlowChart)</a>
+    </div>
+</div>
 
 <form id="form">
     <div class="row">
