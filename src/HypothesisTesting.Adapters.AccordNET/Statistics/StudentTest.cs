@@ -7,6 +7,9 @@ using HypothesisTesting.Domain.Services;
 
 namespace HypothesisTesting.Adapters.AccordNET.Statistics
 {
+    /// <summary>
+    /// https://www.socscistatistics.com/tests/studentttest/default.aspx
+    /// </summary>
     internal class StudentTest : IStudentTest
     {
         private readonly IExecutionLogger _executionLogger;

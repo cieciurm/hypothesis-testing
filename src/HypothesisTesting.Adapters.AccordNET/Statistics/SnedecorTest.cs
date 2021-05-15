@@ -9,6 +9,9 @@ using HypothesisTesting.Domain.Services;
 
 namespace HypothesisTesting.Adapters.AccordNET.Statistics
 {
+    /// <summary>
+    /// https://www.statskingdom.com/220VarF2.html
+    /// </summary>
     internal class SnedecorTest : ISnedecorTest
     {
         private readonly IExecutionLogger _executionLogger;
