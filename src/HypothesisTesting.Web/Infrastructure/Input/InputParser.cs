@@ -9,9 +9,10 @@ namespace HypothesisTesting.Web.Infrastructure.Input
     {
         public static DataSeries Parse(string val)
         {
-            var splitted = val.Split(new[] { ',', ';', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-
-            var sample = splitted.Select(x => Convert.ToDouble(x, CultureInfo.InvariantCulture));
+            var sample = val
+                .Trim()
+                .Split(new[] { ',', ';', '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => Convert.ToDouble(x, CultureInfo.InvariantCulture));
 
             return new DataSeries(sample);
         }
