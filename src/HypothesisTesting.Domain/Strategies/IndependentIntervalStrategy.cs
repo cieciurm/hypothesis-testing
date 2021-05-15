@@ -1,13 +1,13 @@
 ﻿using HypothesisTesting.Domain.Models;
-using HypothesisTesting.Domain.Ports;
 using HypothesisTesting.Domain.Ports.Statistics;
+using static HypothesisTesting.Domain.Constants;
 
 namespace HypothesisTesting.Domain.Strategies
 {
     public class IndependentIntervalStrategy : IStrategy
     {
-        public string ScaleMeasure => Constants.ScaleMeasures.Interval;
-        public string SampleType => Constants.SamplesTypes.Independent;
+        public string ScaleMeasure => ScaleMeasures.Interval;
+        public string SampleType => SamplesTypes.Independent;
 
         private readonly INormalDistributionTest _normalDistributionTest;
         private readonly IMannWhitneyTest _mannWhitneyTest;
