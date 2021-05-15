@@ -4,6 +4,6 @@ namespace HypothesisTesting.Domain.Ports.Statistics
 {
     public interface INormalDistributionTest
     {
-        bool IsNormalDistribution(DataSeries dataSeries);
+        bool IsNormalDistribution(DataSeries dataSeries, double significance);
     }
 }

@@ -23,7 +23,7 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
             _translator = translator;
         }
 
-        public bool IsVarianceEqual(InputData inputData)
+        public bool IsVarianceEqual(InputData inputData, double significance)
         {
             var s1 = inputData.XValues.Values;
             var s2 = inputData.YValues.Values;
@@ -33,7 +33,7 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
 
             var f = new FTest(var1, var2, s1.Length - 1, s2.Length - 1, TwoSampleHypothesis.ValuesAreDifferent);
 
-            var isVarianceEqual = Settings.IsHypothesisTrue(f.PValue);
+            var isVarianceEqual = HypothesisHelper.IsHypothesisTrue(f.PValue, significance);
 
             _executionLogger.AddLog(_translator.Translate(Constants.Translations.SnedecorTestMethod));
             var @true = _translator.Translate(isVarianceEqual.ToString());

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using HypothesisTesting.Adapters.AccordNET.Statistics;
+using HypothesisTesting.Domain;
 using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Translations;
 using HypothesisTesting.Domain.Services;
@@ -28,7 +29,7 @@ namespace HypothesisTesting.Adapters.AccordNET.Tests.Statistics
         public void IsNormalDistribution_WhenDataProvided_ThenDetectsIfDistributionIsNormal(double[] sample, bool expectedIsNormal, string expectedTest)
         {
             // Act
-            var result = _test.IsNormalDistribution(new DataSeries(sample));
+            var result = _test.IsNormalDistribution(new DataSeries(sample), Constants.DefaultSignificance);
 
             // Assert
             result.ShouldBe(expectedIsNormal);

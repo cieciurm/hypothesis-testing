@@ -28,8 +28,8 @@ namespace HypothesisTesting.Domain.Strategies
 
         public OutputData Execute(InputData input)
         {
-            var isXNormalDistribution = _normalDistributionTest.IsNormalDistribution(input.XValues);
-            var isYNormalDistribution = _normalDistributionTest.IsNormalDistribution(input.YValues);
+            var isXNormalDistribution = _normalDistributionTest.IsNormalDistribution(input.XValues, input.Significance);
+            var isYNormalDistribution = _normalDistributionTest.IsNormalDistribution(input.YValues, input.Significance);
 
             if (!isXNormalDistribution || !isYNormalDistribution)
             {
@@ -38,7 +38,7 @@ namespace HypothesisTesting.Domain.Strategies
                 return OutputData.Success(mwPValue);
             }
 
-            var isVarianceEqual = _snedecorTest.IsVarianceEqual(input);
+            var isVarianceEqual = _snedecorTest.IsVarianceEqual(input, input.Significance);
             var studentPValue = _studentTest.Calculate(input, isVarianceEqual);
 
             return OutputData.Success(studentPValue);

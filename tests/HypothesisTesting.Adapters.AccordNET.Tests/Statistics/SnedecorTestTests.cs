@@ -1,5 +1,6 @@
 using System;
 using HypothesisTesting.Adapters.AccordNET.Statistics;
+using HypothesisTesting.Domain;
 using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Translations;
 using HypothesisTesting.Domain.Services;
@@ -32,7 +33,7 @@ namespace HypothesisTesting.Adapters.AccordNET.Tests.Statistics
             var inputData = new InputData(s1, s2);
 
             // Act
-            var result = _snedecorTest.IsVarianceEqual(inputData);
+            var result = _snedecorTest.IsVarianceEqual(inputData, Constants.DefaultSignificance);
 
             // Assert
             result.ShouldBe(expected);

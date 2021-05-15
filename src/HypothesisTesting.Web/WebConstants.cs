@@ -18,6 +18,7 @@
             public const string Ordinal = nameof(Ordinal);
             public const string Submit = nameof(Submit);
             public const string Error = nameof(Error);
+            public const string Significance = nameof(Significance);
         }
 
         public static class Languages

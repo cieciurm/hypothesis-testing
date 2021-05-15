@@ -46,7 +46,7 @@ namespace HypothesisTesting.Web.Controllers
             var x = InputParser.Parse(dto.XValues);
             var y = InputParser.Parse(dto.YValues);
 
-            var outputData = _executor.Execute(new InputData(x, y, dto.SamplesType, dto.ScaleMeasure));
+            var outputData = _executor.Execute(new InputData(x, y, dto.SamplesType, dto.ScaleMeasure, dto.Significance));
             var viewModel = TestResultViewModel.ToViewModel(dto.Language, _translator, outputData, _executionLogger);
 
             return PartialView("Results", viewModel);

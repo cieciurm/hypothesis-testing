@@ -72,6 +72,31 @@
             </ul>
         </div>
     </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <h5>@Model.GetTranslation(WebConstants.Translations.Significance)</h5>
+            <ul class="list-unstyled">
+                <li>
+                    <label>
+                        @Html.RadioButtonFor(x => x.Significance, 0.01)
+                        0.01
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        @Html.RadioButtonFor(x => x.Significance, 0.05)
+                        0.05
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        @Html.RadioButtonFor(x => x.Significance, 0.1)
+                        0.1
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
     <input type="submit" class="btn btn-success" value="@Model.GetTranslation(WebConstants.Translations.Submit)" />
 </form>
 
@@ -102,7 +127,8 @@
                     yValues: $("#@nameof(TestViewModel.YValues)").val(),
                     scaleMeasure: $("input[name=@nameof(TestViewModel.ScaleMeasure)]:checked").val(),
                     samplesType: $("input[name=@nameof(TestViewModel.SamplesType)]:checked").val(),
-                    language: $('#@nameof(TestViewModel.Language)').val()
+                    language: $('#@nameof(TestViewModel.Language)').val(),
+                    significance: $('#@nameof(TestViewModel.Significance)').val()
                 };
 
                 $.post("@Url.Action("Submit")", viewModel, function(result) {

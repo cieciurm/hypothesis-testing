@@ -11,5 +11,7 @@
         public string ScaleMeasure { get; set; }
 
         public string Language { get; set; }
+
+        public double Significance { get; set; }
     }
 }

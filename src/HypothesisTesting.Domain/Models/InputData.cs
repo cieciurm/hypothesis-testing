@@ -10,12 +10,15 @@
 
         public string ScaleMeasure { get; }
 
-        public InputData(DataSeries xValues, DataSeries yValues, string sampleType, string scaleMeasure)
+        public double Significance { get; }
+
+        public InputData(DataSeries xValues, DataSeries yValues, string sampleType, string scaleMeasure, double significance)
         {
             XValues = xValues;
             YValues = yValues;
             SampleType = sampleType;
             ScaleMeasure = scaleMeasure;
+            Significance = significance;
         }
 
         public InputData(double[] s1, double[] s2)

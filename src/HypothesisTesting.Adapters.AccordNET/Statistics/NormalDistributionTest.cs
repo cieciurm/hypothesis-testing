@@ -28,7 +28,7 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
             _translator = translator;
         }
 
-        public bool IsNormalDistribution(DataSeries dataSeries)
+        public bool IsNormalDistribution(DataSeries dataSeries, double significance)
         {
             var sample = dataSeries.Values;
 
@@ -39,7 +39,7 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
                 try
                 {
                     var swResult = new ShapiroWilkTest(sample);
-                    return IsNormalDistribution(swResult);
+                    return IsNormalDistribution(swResult, significance);
                 }
                 catch (Exception)
                 {
@@ -50,13 +50,13 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
             _logger.AddLog(_translator.Translate(Constants.Translations.DistributionTestMethod, sample.Length, "Kolmogorov-Smirnov"));
 
             var ksResult = new KolmogorovSmirnovTest(sample, new KolmogorovSmirnovDistribution(sample.Length));
-            return IsNormalDistribution(ksResult);
+            return IsNormalDistribution(ksResult, significance);
         }
 
-        private bool IsNormalDistribution<T>(HypothesisTest<T> result)
+        private bool IsNormalDistribution<T>(HypothesisTest<T> result, double significance)
             where T : IUnivariateDistribution
         {
-            var isNormal = Settings.IsHypothesisTrue(result.PValue);
+            var isNormal = HypothesisHelper.IsHypothesisTrue(result.PValue, significance);
             var isNormalText = _translator.Translate(isNormal.ToString());
 
             var log = _translator.Translate(Constants.Translations.DistributionTest, result.PValue.Round(), isNormalText);

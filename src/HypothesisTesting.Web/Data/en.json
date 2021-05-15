@@ -25,5 +25,6 @@
   "StrategyNotFound": "Algorithm not found",
   "SelectingStrategy": "Selecting algorithm for sample type: {0} and scale: {1}",
   "True": "true",
-  "False": "false"
+  "False": "false",
+  "Significance": "Statistical significance"
 }

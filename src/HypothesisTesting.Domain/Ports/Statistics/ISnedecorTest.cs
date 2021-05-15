@@ -4,6 +4,6 @@ namespace HypothesisTesting.Domain.Ports.Statistics
 {
     public interface ISnedecorTest
     {
-        bool IsVarianceEqual(InputData inputData);
+        bool IsVarianceEqual(InputData inputData, double significance);
     }
 }
