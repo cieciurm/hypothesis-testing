@@ -12,10 +12,26 @@ namespace HypothesisTesting.Web.Tests.Infrastructure.Input
         public void Parse_WhenInputProvided_ThenShouldParseCorrectly(string input, int expectedLength)
         {
             // Act
-            var output = InputParser.Parse(input);
+            var success = InputParser.TryParse(input, out var dataSeries);
 
             // Assert
-            output.Values.Length.ShouldBe(expectedLength);
+            success.ShouldBeTrue();
+            dataSeries.Values.Length.ShouldBe(expectedLength);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        [InlineData("aaa")]
+        [InlineData(";")]
+        public void Parse_WhenIncorrectInputProvided_ThenShouldReturnFalseAndEmptyDataSeries(string input)
+        {
+            // Act
+            var success = InputParser.TryParse(input, out var dataSeries);
+
+            // Assert
+            success.ShouldBeFalse();
+            dataSeries.Values.ShouldBeEmpty();
         }
     }
 }

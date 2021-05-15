@@ -7,14 +7,26 @@ namespace HypothesisTesting.Web.Infrastructure.Input
 {
     public static class InputParser
     {
-        public static DataSeries Parse(string val)
+        public static bool TryParse(string val, out DataSeries dataSeries)
         {
-            var sample = val
-                .Trim()
-                .Split(new[] { ',', ';', '\n' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(x => Convert.ToDouble(x, CultureInfo.InvariantCulture));
+            try
+            {
+                var sample = val
+                    .Trim()
+                    .Split(new[] {',', ';', '\n'}, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(x => Convert.ToDouble(x, CultureInfo.InvariantCulture))
+                    .ToList();
 
-            return new DataSeries(sample);
+                dataSeries = new DataSeries(sample);
+
+                return sample.Any();
+            }
+            catch (Exception)
+            {
+                dataSeries = new DataSeries(Array.Empty<double>());
+
+                return false;
+            }
         }
     }
 }

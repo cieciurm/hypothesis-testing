@@ -43,8 +43,10 @@ namespace HypothesisTesting.Web.Controllers
                 return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto.Language, _translator, _executionLogger));
             }
 
-            var x = InputParser.Parse(dto.XValues);
-            var y = InputParser.Parse(dto.YValues);
+            if (!InputParser.TryParse(dto.XValues, out var x) || !InputParser.TryParse(dto.YValues, out var y))
+            {
+                return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto.Language, _translator, _executionLogger));
+            }
 
             var outputData = _executor.Execute(new InputData(x, y, dto.SamplesType, dto.ScaleMeasure, dto.Significance));
             var viewModel = TestResultViewModel.ToViewModel(dto.Language, _translator, outputData, _executionLogger);
