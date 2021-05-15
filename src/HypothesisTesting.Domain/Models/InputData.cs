@@ -17,5 +17,11 @@
             SampleType = sampleType;
             ScaleMeasure = scaleMeasure;
         }
+
+        public InputData(double[] s1, double[] s2)
+        {
+            XValues = new DataSeries(s1);
+            YValues = new DataSeries(s2);
+        }
     }
 }

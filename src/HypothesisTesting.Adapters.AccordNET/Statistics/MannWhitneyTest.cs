@@ -7,6 +7,9 @@ using HypothesisTesting.Domain.Services;
 
 namespace HypothesisTesting.Adapters.AccordNET.Statistics
 {
+    /// <summary>
+    /// https://www.socscistatistics.com/tests/mannwhitney/
+    /// </summary>
     internal class MannWhitneyTest : IMannWhitneyTest
     {
         private readonly IExecutionLogger _executionLogger;
@@ -20,7 +23,7 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
 
         public double Calculate(InputData inputData)
         {
-            var mww = new MannWhitneyWilcoxonTest(inputData.XValues.Values, inputData.YValues.Values);
+            var mww = new MannWhitneyWilcoxonTest(inputData.XValues.Values, inputData.YValues.Values, exact: true);
 
             _executionLogger.AddLog(_translator.Translate(Constants.Translations.ManWhitneyTestMethod));
 
