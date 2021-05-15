@@ -32,8 +32,9 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
             var var2 = s2.Variance();
 
             var f = new FTest(var1, var2, s1.Length - 1, s2.Length - 1, TwoSampleHypothesis.ValuesAreDifferent);
+            f.Size = significance;
 
-            var isVarianceEqual = HypothesisHelper.IsHypothesisTrue(f.PValue, significance);
+            var isVarianceEqual = f.Statistic < f.CriticalValue;
 
             _executionLogger.AddLog(_translator.Translate(Constants.Translations.SnedecorTestMethod));
             var @true = _translator.Translate(isVarianceEqual.ToString());
