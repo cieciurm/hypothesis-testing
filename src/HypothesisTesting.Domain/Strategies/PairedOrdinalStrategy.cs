@@ -1,4 +1,5 @@
 ﻿using HypothesisTesting.Domain.Models;
+using HypothesisTesting.Domain.Ports.Statistics;
 
 namespace HypothesisTesting.Domain.Strategies
 {
@@ -8,11 +9,18 @@ namespace HypothesisTesting.Domain.Strategies
 
         public string ScaleMeasure => Constants.ScaleMeasures.Ordinal;
 
+        private readonly IWilcoxonSignedRankTest _wilcoxonTest;
+
+        public PairedOrdinalStrategy(IWilcoxonSignedRankTest wilcoxonTest)
+        {
+            _wilcoxonTest = wilcoxonTest;
+        }
+
         public OutputData Execute(InputData input)
         {
-            // Wilcoxon
+            var pValue = _wilcoxonTest.Calculate(input);
 
-            return OutputData.Error();
+            return OutputData.Success(pValue);
         }
     }
 }

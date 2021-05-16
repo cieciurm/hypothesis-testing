@@ -11,6 +11,9 @@ namespace HypothesisTesting.Adapters.AccordNET.Extensions
             services.AddScoped<INormalDistributionTest, NormalDistributionTest>();
             services.AddScoped<IMannWhitneyTest, MannWhitneyTest>();
             services.AddScoped<IStudentTest, StudentTest>();
+            services.AddScoped<IStudentPairedTest, StudentPairedTest>();
+            services.AddScoped<IWilcoxonSignedRankTest, WilcoxonSignedRankTest>();
+            services.AddScoped<IContingencyMatrixCalculator, ContingencyMatrixCalculator>();
 
             return services;
         }

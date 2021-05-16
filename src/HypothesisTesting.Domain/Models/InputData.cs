@@ -25,6 +25,7 @@
         {
             XValues = new DataSeries(s1);
             YValues = new DataSeries(s2);
+            Significance = Constants.DefaultSignificance;
         }
     }
 }
