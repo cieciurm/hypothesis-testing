@@ -1,5 +1,4 @@
 using HypothesisTesting.Adapters.AccordNET.Extensions;
-using HypothesisTesting.Adapters.NMath.Extensions;
 using HypothesisTesting.Web.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,7 +21,6 @@ namespace HypothesisTesting.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAccordNet();
-            services.AddNMath();
             services.AddHypothesisTesting();
             services.AddControllersWithViews();
         }

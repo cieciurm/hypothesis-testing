@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HypothesisTesting.Adapters.AccordNET\HypothesisTesting.Adapters.AccordNET.csproj" />
-    <ProjectReference Include="..\HypothesisTesting.Adapters.NMath\HypothesisTesting.Adapters.NMath.csproj" />
     <ProjectReference Include="..\HypothesisTesting.Domain\HypothesisTesting.Domain.csproj" />
   </ItemGroup>
 

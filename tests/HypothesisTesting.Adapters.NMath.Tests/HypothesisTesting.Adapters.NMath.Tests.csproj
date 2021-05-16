@@ -21,8 +21,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\HypothesisTesting.Adapters.NMath\HypothesisTesting.Adapters.NMath.csproj" />
-  </ItemGroup>
-
 </Project>
