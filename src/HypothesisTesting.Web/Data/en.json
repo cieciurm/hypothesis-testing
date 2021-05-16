@@ -20,6 +20,8 @@
   "ManWhitneyTestMethod": "Mann-Whitney Test",
   "StudentIndependentWithEqualVariancesTestMethod": "Student Test for 2 independent means with equal variation",
   "StudentIndependentWithNotEqualVariancesTestMethod": "Student Test for 2 independent means with not equal variation",
+  "StudentPairedTestMethod": "Student Test for 2 dependen meas",
+  "WilcoxonSignedRankTestMethod": "The Wilcoxon Signed-Ranks Test",
 
   "Error": "Error",
   "StrategyNotFound": "Algorithm not found",

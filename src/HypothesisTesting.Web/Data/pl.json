@@ -20,11 +20,13 @@
   "ManWhitneyTestMethod": "Test Manna-Whitneya",
   "StudentIndependentWithEqualVariancesTestMethod": "Test Studenta dla prób niepowiązanych przy równych wariancjach",
   "StudentIndependentWithNotEqualVariancesTestMethod": "Test Studenta dla prób niepowiązanych przy różnych wariancjach",
+  "StudentPairedTestMethod": "Test Studenta dla prób powiązanych",
+  "WilcoxonSignedRankTestMethod": "Test par Wilcoxona (rangowanych znaków)",
 
   "Error": "Błąd",
   "StrategyNotFound": "Algorytm nie został znaleziony",
   "SelectingStrategy": "Wybieram algorytm dla powiązania prób: {0} i skali: {1}",
   "True": "prawda",
   "False": "fałsz",
-  "Significance":  "Poziom istotności"
+  "Significance": "Poziom istotności"
 }

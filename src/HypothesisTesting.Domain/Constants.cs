@@ -24,6 +24,8 @@
             public const string ManWhitneyTestMethod = nameof(ManWhitneyTestMethod);
             public const string StudentIndependentWithEqualVariancesTestMethod = nameof(StudentIndependentWithEqualVariancesTestMethod);
             public const string StudentIndependentWithNotEqualVariancesTestMethod = nameof(StudentIndependentWithNotEqualVariancesTestMethod);
+            public const string StudentPairedTestMethod = nameof(StudentPairedTestMethod);
+            public const string WilcoxonSignedRankTestMethod = nameof(WilcoxonSignedRankTestMethod);
 
             public const string StrategyNotFound = nameof(StrategyNotFound);
             public const string SelectingStrategy = nameof(SelectingStrategy);

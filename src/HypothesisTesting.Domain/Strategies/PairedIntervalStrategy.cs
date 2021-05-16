@@ -11,10 +11,17 @@ namespace HypothesisTesting.Domain.Strategies
         public string ScaleMeasure => ScaleMeasures.Interval;
 
         private readonly INormalDistributionTest _normalDistributionTest;
+        private readonly IStudentPairedTest _studentPairedTest;
+        private readonly IWilcoxonSignedRankTest _wilcoxonTest;
 
-        public PairedIntervalStrategy(INormalDistributionTest normalDistributionTest)
+        public PairedIntervalStrategy(
+            INormalDistributionTest normalDistributionTest,
+            IStudentPairedTest studentPairedTest,
+            IWilcoxonSignedRankTest wilcoxonTest)
         {
             _normalDistributionTest = normalDistributionTest;
+            _studentPairedTest = studentPairedTest;
+            _wilcoxonTest = wilcoxonTest;
         }
 
         public OutputData Execute(InputData input)
@@ -22,16 +29,17 @@ namespace HypothesisTesting.Domain.Strategies
             var isXNormalDistribution = _normalDistributionTest.IsNormalDistribution(input.XValues, input.Significance);
             var isYNormalDistribution = _normalDistributionTest.IsNormalDistribution(input.YValues, input.Significance);
 
+            double pValue;
             if (isXNormalDistribution && isYNormalDistribution)
             {
-                // TStudent
+                pValue = _studentPairedTest.Calculate(input);
             }
             else
             {
-                // Wilcoxon
+                pValue = _wilcoxonTest.Calculate(input);
             }
 
-            return OutputData.Error();
+            return OutputData.Success(pValue);
         }
     }
 }

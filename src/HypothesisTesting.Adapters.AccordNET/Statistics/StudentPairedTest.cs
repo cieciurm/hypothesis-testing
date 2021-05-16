@@ -1,4 +1,5 @@
 ﻿using Accord.Statistics.Testing;
+using HypothesisTesting.Domain;
 using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Statistics;
 using HypothesisTesting.Domain.Ports.Translations;
@@ -21,6 +22,8 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
         {
             var s1 = inputData.XValues.Values;
             var s2 = inputData.YValues.Values;
+
+            _executionLogger.AddLog(_translator.Translate(Constants.Translations.StudentPairedTestMethod));
 
             var t = new PairedTTest(s1, s2);
             t.Size = inputData.Significance;
