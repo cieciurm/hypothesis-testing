@@ -13,6 +13,7 @@ namespace HypothesisTesting.Web.Extensions
             .AddStrategies();
 
         private static IServiceCollection AddInfrastructure(this IServiceCollection services) => services
+            .AddScoped<IExecutor, Executor>()
             .AddScoped<IExecutionLogger, ExecutionLogger>()
             .AddScoped<ITranslationsProvider, TranslationsProvider>()
             .AddScoped<ITranslator, Translator>()
@@ -21,6 +22,9 @@ namespace HypothesisTesting.Web.Extensions
         private static IServiceCollection AddStrategies(this IServiceCollection services) => services
             .AddScoped<IStrategy, IndependentIntervalStrategy>()
             .AddScoped<IStrategy, IndependentOrdinalStrategy>()
-            .AddScoped<IExecutor, Executor>();
+            .AddScoped<IStrategy, IndependentNominalStrategy>()
+            .AddScoped<IStrategy, PairedIntervalStrategy>()
+            .AddScoped<IStrategy, PairedOrdinalStrategy>()
+            .AddScoped<IStrategy, PairedNominalStrategy>();
     }
 }

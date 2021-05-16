@@ -6,8 +6,9 @@ namespace HypothesisTesting.Domain.Strategies
 {
     public class IndependentOrdinalStrategy : IStrategy
     {
-        public string ScaleMeasure => ScaleMeasures.Ordinal;
         public string SampleType => SamplesTypes.Independent;
+
+        public string ScaleMeasure => ScaleMeasures.Ordinal;
 
         private readonly IMannWhitneyTest _mannWhitneyTest;
 

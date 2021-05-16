@@ -6,8 +6,9 @@ namespace HypothesisTesting.Domain.Strategies
 {
     public class IndependentIntervalStrategy : IStrategy
     {
-        public string ScaleMeasure => ScaleMeasures.Interval;
         public string SampleType => SamplesTypes.Independent;
+
+        public string ScaleMeasure => ScaleMeasures.Interval;
 
         private readonly INormalDistributionTest _normalDistributionTest;
         private readonly IMannWhitneyTest _mannWhitneyTest;
