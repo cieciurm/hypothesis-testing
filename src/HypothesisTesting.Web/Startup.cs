@@ -1,3 +1,5 @@
+using HypothesisTesting.Adapters.AccordNET.Extensions;
+using HypothesisTesting.Adapters.NMath.Extensions;
 using HypothesisTesting.Web.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +21,8 @@ namespace HypothesisTesting.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAccordNet();
+            services.AddNMath();
             services.AddHypothesisTesting();
             services.AddControllersWithViews();
         }

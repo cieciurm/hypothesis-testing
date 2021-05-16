@@ -11,10 +11,6 @@ using HypothesisTesting.Domain.Services;
 
 namespace HypothesisTesting.Adapters.AccordNET.Statistics
 {
-    /// <summary>
-    /// https://scistatcalc.blogspot.com/2013/10/shapiro-wilk-test-calculator.html
-    /// https://www.socscistatistics.com/tests/kolmogorov/default.aspx
-    /// </summary>
     internal class NormalDistributionTest : INormalDistributionTest
     {
         public const int SampleSize = 50;

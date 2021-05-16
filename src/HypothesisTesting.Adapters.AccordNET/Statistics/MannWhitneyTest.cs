@@ -7,9 +7,6 @@ using HypothesisTesting.Domain.Services;
 
 namespace HypothesisTesting.Adapters.AccordNET.Statistics
 {
-    /// <summary>
-    /// https://www.socscistatistics.com/tests/mannwhitney/
-    /// </summary>
     internal class MannWhitneyTest : IMannWhitneyTest
     {
         private readonly IExecutionLogger _executionLogger;

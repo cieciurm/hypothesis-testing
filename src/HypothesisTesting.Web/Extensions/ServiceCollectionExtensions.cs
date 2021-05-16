@@ -1,6 +1,4 @@
-﻿using HypothesisTesting.Adapters.AccordNET.Extensions;
-using HypothesisTesting.Adapters.NMath.Extensions;
-using HypothesisTesting.Domain.Ports.Translations;
+﻿using HypothesisTesting.Domain.Ports.Translations;
 using HypothesisTesting.Domain.Services;
 using HypothesisTesting.Domain.Strategies;
 using HypothesisTesting.Web.Infrastructure.Translations;
@@ -10,20 +8,19 @@ namespace HypothesisTesting.Web.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddHypothesisTesting(this IServiceCollection services)
-        {
-            services.AddAccordNet();
-            services.AddNMath();
+        public static IServiceCollection AddHypothesisTesting(this IServiceCollection services) => services
+            .AddInfrastructure()
+            .AddStrategies();
 
-            services.AddScoped<IStrategy, IndependentIntervalStrategy>();
-            services.AddScoped<IExecutor, Executor>();
-            services.AddScoped<IExecutionLogger, ExecutionLogger>();
-            
-            services.AddScoped<ITranslationsProvider, TranslationsProvider>();
-            services.AddScoped<ITranslator, Translator>();
-            services.AddScoped<ILanguageProvider, LanguageProvider>();
+        private static IServiceCollection AddInfrastructure(this IServiceCollection services) => services
+            .AddScoped<IExecutionLogger, ExecutionLogger>()
+            .AddScoped<ITranslationsProvider, TranslationsProvider>()
+            .AddScoped<ITranslator, Translator>()
+            .AddScoped<ILanguageProvider, LanguageProvider>();
 
-            return services;
-        }
+        private static IServiceCollection AddStrategies(this IServiceCollection services) => services
+            .AddScoped<IStrategy, IndependentIntervalStrategy>()
+            .AddScoped<IStrategy, IndependentOrdinalStrategy>()
+            .AddScoped<IExecutor, Executor>();
     }
 }

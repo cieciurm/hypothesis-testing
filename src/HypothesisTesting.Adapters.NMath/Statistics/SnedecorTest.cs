@@ -22,7 +22,7 @@ namespace HypothesisTesting.Adapters.NMath.Statistics
         public bool IsVarianceEqual(InputData inputData, double significance)
         {
             var s1 = StatsFunctions.StandardDeviation(new DoubleVector(inputData.XValues.Values));
-            var s2= StatsFunctions.StandardDeviation(new DoubleVector(inputData.YValues.Values));
+            var s2 = StatsFunctions.StandardDeviation(new DoubleVector(inputData.YValues.Values));
 
             var f = new TwoSampleFTest(s1, inputData.XValues.Values.Length, s2, inputData.YValues.Values.Length, significance, HypothesisType.TwoSided);
 
