@@ -24,6 +24,10 @@
   "WilcoxonSignedRankTestMethod": "Test par Wilcoxona (rangowanych znaków)",
 
   "Error": "Błąd",
+  "ErrorIncorrectData": "Błędne dane wejściowe",
+  "ErrorIncorrectDataSize": "Błędne dane wejściowe (wymagane przynajmniej 5 elementów w każdej próbie)",
+  "ErrorPairedDataMustHaveSameSize": "Błędne dane wejściowe (dla cech powiązanych próby muszą być tej samej liczebności)",
+  "ErrorWilcoxonTest": "Błędne dane wejściowe (Test Wilcoxona)",
   "StrategyNotFound": "Algorytm nie został znaleziony",
   "SelectingStrategy": "Wybieram algorytm dla powiązania prób: {0} i skali: {1}",
   "True": "prawda",

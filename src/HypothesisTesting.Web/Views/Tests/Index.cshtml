@@ -103,9 +103,7 @@
 <hr />
 
 <div class="row mt-4">
-    <div class="col-12">
-        <div id="results">
-        </div>
+    <div class="col-12 results">
     </div>
 </div>
 
@@ -128,12 +126,14 @@
                     scaleMeasure: $("input[name=@nameof(TestViewModel.ScaleMeasure)]:checked").val(),
                     samplesType: $("input[name=@nameof(TestViewModel.SamplesType)]:checked").val(),
                     language: $('#@nameof(TestViewModel.Language)').val(),
-                    significance: $('#@nameof(TestViewModel.Significance)').val()
+                    significance: $('input[name=@nameof(TestViewModel.Significance)]:checked').val()
                 };
 
-                $.post("@Url.Action("Submit")", viewModel, function(result) {
-                        $("#results").html(result);
-                    });
+                $.post("@Url.Action("Submit")", viewModel, function (result) {
+                    var newDiv = $("<div/>");
+                    newDiv.html(result);
+                    $(newDiv).prependTo(".results");
+                });
             });
         });
     </script>

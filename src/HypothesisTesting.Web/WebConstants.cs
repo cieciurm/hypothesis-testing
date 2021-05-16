@@ -18,6 +18,10 @@
             public const string Ordinal = nameof(Ordinal);
             public const string Submit = nameof(Submit);
             public const string Error = nameof(Error);
+            public const string ErrorIncorrectData = nameof(ErrorIncorrectData);
+            public const string ErrorIncorrectDataSize = nameof(ErrorIncorrectDataSize);
+            public const string ErrorPairedDataMustHaveSameSize = nameof(ErrorPairedDataMustHaveSameSize);
+            public const string ErrorWilcoxonTest = nameof(ErrorWilcoxonTest);
             public const string Significance = nameof(Significance);
         }
 

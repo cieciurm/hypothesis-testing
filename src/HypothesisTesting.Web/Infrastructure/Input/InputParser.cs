@@ -19,7 +19,7 @@ namespace HypothesisTesting.Web.Infrastructure.Input
 
                 dataSeries = new DataSeries(sample);
 
-                return sample.Any();
+                return sample.Count >= 5;
             }
             catch (Exception)
             {

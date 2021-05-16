@@ -10,8 +10,6 @@ namespace HypothesisTesting.Domain.Models
 
         public string PValue { get; set; }
 
-        public double? Statistics { get; set; }
-
         private OutputData()
         {
         }
@@ -23,11 +21,10 @@ namespace HypothesisTesting.Domain.Models
                 ErrorText = error,
             };
 
-        public static OutputData Success(double pValue, double? statistics = null) =>
+        public static OutputData Success(double pValue) =>
             new OutputData
             {
                 PValue = pValue.Round(),
-                Statistics = statistics,
             };
     }
 }

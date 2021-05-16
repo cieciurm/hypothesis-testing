@@ -24,6 +24,10 @@
   "WilcoxonSignedRankTestMethod": "The Wilcoxon Signed-Ranks Test",
 
   "Error": "Error",
+  "ErrorIncorrectData": "Incorrect data",
+  "ErrorIncorrectDataSize": "Incorrect data (provide at least 5 elements in both samples)",
+  "ErrorPairedDataMustHaveSameSize": "Incorrect data (both samples should be of the same size for nominal scale)",
+  "ErrorWilcoxonTest": "B³êdne dane wejœciowe (an exact test cannot be computed when there are zeros in the samples (or when paired samples are the same in a paired test)",
   "StrategyNotFound": "Algorithm not found",
   "SelectingStrategy": "Selecting algorithm for sample type: {0} and scale: {1}",
   "True": "true",

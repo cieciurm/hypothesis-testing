@@ -5,6 +5,7 @@ using HypothesisTesting.Web.Infrastructure.Input;
 using HypothesisTesting.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using static HypothesisTesting.Web.WebConstants;
 
 namespace HypothesisTesting.Web.Controllers
 {
@@ -27,7 +28,7 @@ namespace HypothesisTesting.Web.Controllers
 
         public IActionResult Index(string language)
         {
-            language ??= WebConstants.Languages.Polish;
+            language ??= Languages.Polish;
             _languageProvider.SetLanguage(language);
 
             var viewModel = new TestViewModel(language, _translator, _configuration);
@@ -40,16 +41,22 @@ namespace HypothesisTesting.Web.Controllers
         {
             if (string.IsNullOrWhiteSpace(dto.XValues) || string.IsNullOrWhiteSpace(dto.YValues))
             {
-                return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto.Language, _translator, _executionLogger));
+                return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto.Language, _translator, dto, _executionLogger, Translations.ErrorIncorrectData));
             }
 
             if (!InputParser.TryParse(dto.XValues, out var x) || !InputParser.TryParse(dto.YValues, out var y))
             {
-                return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto.Language, _translator, _executionLogger));
+                return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto.Language, _translator, dto, _executionLogger, Translations.ErrorIncorrectDataSize));
             }
 
-            var outputData = _executor.Execute(new InputData(x, y, dto.SamplesType, dto.ScaleMeasure, dto.Significance));
-            var viewModel = TestResultViewModel.ToViewModel(dto.Language, _translator, outputData, _executionLogger);
+            if (!InputValidator.IsValid(dto.SamplesType, x, y))
+            {
+                return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto.Language, _translator, dto, _executionLogger, Translations.ErrorPairedDataMustHaveSameSize));
+            }
+
+            var inputData = new InputData(x, y, dto.SamplesType, dto.ScaleMeasure, dto.Significance);
+            var outputData = _executor.Execute(inputData);
+            var viewModel = TestResultViewModel.ToViewModel(dto.Language, _translator, dto, outputData, _executionLogger);
 
             return PartialView("Results", viewModel);
         }
