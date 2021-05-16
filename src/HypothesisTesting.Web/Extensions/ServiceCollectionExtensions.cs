@@ -1,4 +1,5 @@
 ﻿using HypothesisTesting.Adapters.AccordNET.Extensions;
+using HypothesisTesting.Adapters.NMath.Extensions;
 using HypothesisTesting.Domain.Ports.Translations;
 using HypothesisTesting.Domain.Services;
 using HypothesisTesting.Domain.Strategies;
@@ -12,6 +13,7 @@ namespace HypothesisTesting.Web.Extensions
         public static IServiceCollection AddHypothesisTesting(this IServiceCollection services)
         {
             services.AddAccordNet();
+            services.AddNMath();
 
             services.AddScoped<IStrategy, IndependentIntervalStrategy>();
             services.AddScoped<IExecutor, Executor>();

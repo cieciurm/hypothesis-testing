@@ -1,5 +1,4 @@
-using System;
-using HypothesisTesting.Adapters.AccordNET.Statistics;
+using HypothesisTesting.Adapters.NMath.Statistics;
 using HypothesisTesting.Domain;
 using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Translations;
@@ -8,16 +7,11 @@ using Moq;
 using Shouldly;
 using Xunit;
 
-namespace HypothesisTesting.Adapters.AccordNET.Tests.Statistics
+namespace HypothesisTesting.Adapters.NMath.Tests.Statistics
 {
     public class SnedecorTestTests
     {
-        private readonly SnedecorTest _snedecorTest;
-
-        public SnedecorTestTests()
-        {
-            _snedecorTest = new SnedecorTest(Mock.Of<IExecutionLogger>(), Mock.Of<ITranslator>());
-        }
+        private readonly SnedecorTest _snedecorTest = new SnedecorTest(Mock.Of<IExecutionLogger>(), Mock.Of<ITranslator>());
 
         [Theory]
         [InlineData(
@@ -30,10 +24,8 @@ namespace HypothesisTesting.Adapters.AccordNET.Tests.Statistics
             false)]
         public void IsVarianceEqual_WhenDataProvided_ThenDetectsIfVarianceIsEqual(double[] s1, double[] s2, bool expected)
         {
-            var inputData = new InputData(s1, s2);
-
             // Act
-            var result = _snedecorTest.IsVarianceEqual(inputData, Constants.DefaultSignificance);
+            var result = _snedecorTest.IsVarianceEqual(new InputData(s1, s2), Constants.DefaultSignificance);
 
             // Assert
             result.ShouldBe(expected);

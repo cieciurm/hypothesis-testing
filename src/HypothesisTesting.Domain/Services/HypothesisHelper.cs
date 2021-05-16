@@ -1,6 +1,6 @@
-﻿namespace HypothesisTesting.Adapters.AccordNET
+﻿namespace HypothesisTesting.Domain.Services
 {
-    internal static class HypothesisHelper
+    public static class HypothesisHelper
     {
         public static bool IsHypothesisTrue(double pValue, double significance) => pValue >= significance;
     }
