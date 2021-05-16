@@ -19,8 +19,6 @@ namespace HypothesisTesting.Web.Models
 
         public string Error { get; set; }
 
-        public string PValue { get; set; }
-
         public double Significance { get; set; }
 
         public TestResultViewModel(string language, ITranslator translator)
@@ -34,7 +32,6 @@ namespace HypothesisTesting.Web.Models
             {
                 Logs = executionLogger.GetLog().ToList(),
                 HasError = outputData.HasError,
-                PValue = outputData.PValue,
                 Error = outputData.ErrorText,
                 XValues = testDto.XValues,
                 YValues = testDto.YValues,
@@ -44,12 +41,15 @@ namespace HypothesisTesting.Web.Models
             return viewModel;
         }
 
-        public static TestResultViewModel ToErrorViewModel(string language, ITranslator translator, TestDto testDto, IExecutionLogger executionLogger, string errorKey = null)
+        public static TestResultViewModel ToErrorViewModel(TestDto dto, ITranslator translator, IExecutionLogger executionLogger, string errorKey = null)
         {
-            var viewModel = new TestResultViewModel(language, translator)
+            var viewModel = new TestResultViewModel(dto.Language, translator)
             {
                 Logs = executionLogger.GetLog().ToList(),
                 HasError = true,
+                XValues = dto.XValues,
+                YValues = dto.YValues,
+                Significance = dto.Significance,
                 Error = string.IsNullOrWhiteSpace(errorKey) ? string.Empty : translator.Translate(errorKey),
             };
 

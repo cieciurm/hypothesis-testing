@@ -41,17 +41,17 @@ namespace HypothesisTesting.Web.Controllers
         {
             if (string.IsNullOrWhiteSpace(dto.XValues) || string.IsNullOrWhiteSpace(dto.YValues))
             {
-                return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto.Language, _translator, dto, _executionLogger, Translations.ErrorIncorrectData));
+                return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto, _translator, _executionLogger, Translations.ErrorIncorrectData));
             }
 
             if (!InputParser.TryParse(dto.XValues, out var x) || !InputParser.TryParse(dto.YValues, out var y))
             {
-                return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto.Language, _translator, dto, _executionLogger, Translations.ErrorIncorrectDataSize));
+                return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto, _translator, _executionLogger, Translations.ErrorIncorrectDataSize));
             }
 
             if (!InputValidator.IsValid(dto.SamplesType, x, y))
             {
-                return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto.Language, _translator, dto, _executionLogger, Translations.ErrorPairedDataMustHaveSameSize));
+                return PartialView("Results", TestResultViewModel.ToErrorViewModel(dto, _translator, _executionLogger, Translations.ErrorPairedDataMustHaveSameSize));
             }
 
             var inputData = new InputData(x, y, dto.SamplesType, dto.ScaleMeasure, dto.Significance);

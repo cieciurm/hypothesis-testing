@@ -22,6 +22,7 @@
   "StudentIndependentWithNotEqualVariancesTestMethod": "Test Studenta dla prób niepowiązanych przy różnych wariancjach",
   "StudentPairedTestMethod": "Test Studenta dla prób powiązanych",
   "WilcoxonSignedRankTestMethod": "Test par Wilcoxona (rangowanych znaków)",
+  "Result": "p-value: {0} => wartości oczekiwane cech równe: {1}",
 
   "Error": "Błąd",
   "ErrorIncorrectData": "Błędne dane wejściowe",

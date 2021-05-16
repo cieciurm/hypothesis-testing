@@ -29,6 +29,7 @@
 
             public const string StrategyNotFound = nameof(StrategyNotFound);
             public const string SelectingStrategy = nameof(SelectingStrategy);
+            public const string Result = nameof(Result);
         }
 
         public const double DefaultSignificance = 0.05;

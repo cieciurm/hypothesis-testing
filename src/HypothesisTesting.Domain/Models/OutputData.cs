@@ -8,7 +8,7 @@ namespace HypothesisTesting.Domain.Models
 
         public string ErrorText { get; set; }
 
-        public string PValue { get; set; }
+        public double PValue { get; set; }
 
         private OutputData()
         {
@@ -24,7 +24,7 @@ namespace HypothesisTesting.Domain.Models
         public static OutputData Success(double pValue) =>
             new OutputData
             {
-                PValue = pValue.Round(),
+                PValue = pValue,
             };
     }
 }
