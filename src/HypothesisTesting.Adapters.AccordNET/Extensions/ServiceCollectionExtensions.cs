@@ -6,16 +6,14 @@ namespace HypothesisTesting.Adapters.AccordNET.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddAccordNet(this IServiceCollection services)
-        {
-            services.AddScoped<INormalDistributionTest, NormalDistributionTest>();
-            services.AddScoped<ISnedecorTest, SnedecorTest>();
-            services.AddScoped<IMannWhitneyTest, MannWhitneyTest>();
-            services.AddScoped<IStudentTest, StudentTest>();
-            services.AddScoped<IStudentPairedTest, StudentPairedTest>();
-            services.AddScoped<IWilcoxonSignedRankTest, WilcoxonSignedRankTest>();
-
-            return services;
-        }
+        public static IServiceCollection AddAccordNet(this IServiceCollection services) => services
+            .AddScoped<INormalDistributionTest, NormalDistributionTest>()
+            .AddScoped<ISnedecorTest, SnedecorTest>()
+            .AddScoped<IMannWhitneyTest, MannWhitneyTest>()
+            .AddScoped<IStudentTest, StudentTest>()
+            .AddScoped<IStudentPairedTest, StudentPairedTest>()
+            .AddScoped<IWilcoxonSignedRankTest, WilcoxonSignedRankTest>()
+            .AddScoped<IMcNemarTest, McNemarTestImpl>()
+            .AddScoped<IFisherTest, FisherTest>();
     }
 }

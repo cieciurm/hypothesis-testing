@@ -1,6 +1,4 @@
-﻿using HypothesisTesting.Domain.Extensions;
-
-namespace HypothesisTesting.Domain.Models
+﻿namespace HypothesisTesting.Domain.Models
 {
     public class OutputData
     {
