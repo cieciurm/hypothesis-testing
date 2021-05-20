@@ -1,5 +1,7 @@
-﻿using HypothesisTesting.Domain.Ports.Translations;
+﻿using HypothesisTesting.Domain.Ports.Statistics;
+using HypothesisTesting.Domain.Ports.Translations;
 using HypothesisTesting.Domain.Services;
+using HypothesisTesting.Domain.Statistics;
 using HypothesisTesting.Domain.Strategies;
 using HypothesisTesting.Web.Infrastructure.Translations;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +12,7 @@ namespace HypothesisTesting.Web.Extensions
     {
         public static IServiceCollection AddHypothesisTesting(this IServiceCollection services) => services
             .AddInfrastructure()
+            .AddServices()
             .AddStrategies();
 
         private static IServiceCollection AddInfrastructure(this IServiceCollection services) => services
@@ -26,5 +29,8 @@ namespace HypothesisTesting.Web.Extensions
             .AddScoped<IStrategy, PairedIntervalStrategy>()
             .AddScoped<IStrategy, PairedOrdinalStrategy>()
             .AddScoped<IStrategy, PairedNominalStrategy>();
+
+        private static IServiceCollection AddServices(this IServiceCollection services) => services
+            .AddScoped<IContingencyMatrixCalculator, ContingencyMatrixCalculator>();
     }
 }

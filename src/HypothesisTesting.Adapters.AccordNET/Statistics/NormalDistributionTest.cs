@@ -8,6 +8,7 @@ using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Statistics;
 using HypothesisTesting.Domain.Ports.Translations;
 using HypothesisTesting.Domain.Services;
+using HypothesisTesting.Domain.Statistics;
 
 namespace HypothesisTesting.Adapters.AccordNET.Statistics
 {
