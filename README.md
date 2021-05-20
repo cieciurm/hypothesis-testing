@@ -6,7 +6,7 @@
 
 ## About
 
-Dynamic statiscial hypothestis testing for two samples.
+Dynamic statistical hypothesis testing for two samples.
 
 Used tests & algorithms:
 * Shapiro-Wilk Test
