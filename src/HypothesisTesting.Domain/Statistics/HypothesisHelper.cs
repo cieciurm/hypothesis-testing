@@ -1,4 +1,4 @@
-﻿namespace HypothesisTesting.Domain.Services
+﻿namespace HypothesisTesting.Domain.Statistics
 {
     public static class HypothesisHelper
     {

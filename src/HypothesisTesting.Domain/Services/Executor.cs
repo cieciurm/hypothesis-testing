@@ -3,6 +3,7 @@ using System.Linq;
 using HypothesisTesting.Domain.Extensions;
 using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Translations;
+using HypothesisTesting.Domain.Statistics;
 using HypothesisTesting.Domain.Strategies;
 
 namespace HypothesisTesting.Domain.Services

@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
-using HypothesisTesting.Adapters.AccordNET.Statistics;
 using HypothesisTesting.Domain.Models;
-using HypothesisTesting.Domain.Services;
 using HypothesisTesting.Domain.Statistics;
 using Shouldly;
 using Xunit;
 
-namespace HypothesisTesting.Adapters.AccordNET.Tests.Statistics
+namespace HypothesisTesting.Domain.Tests.Statistics
 {
     public class ContingencyMatrixCalculatorTests
     {
@@ -41,6 +39,5 @@ namespace HypothesisTesting.Adapters.AccordNET.Tests.Statistics
                 { 0, 0, 0, 0, 1 },
             } },
         };
-
     }
 }

@@ -3,7 +3,7 @@ using System.Linq;
 using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Statistics;
 
-namespace HypothesisTesting.Adapters.AccordNET.Statistics
+namespace HypothesisTesting.Domain.Statistics
 {
     public class ContingencyMatrixCalculator : IContingencyMatrixCalculator
     {
