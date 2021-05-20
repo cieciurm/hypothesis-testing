@@ -8,6 +8,8 @@
 
         public double PValue { get; set; }
 
+        public string ResultKey { get; set; }
+
         private OutputData()
         {
         }
@@ -19,10 +21,11 @@
                 ErrorText = error,
             };
 
-        public static OutputData Success(double pValue) =>
+        public static OutputData Success(double pValue, string resultKey = "") =>
             new OutputData
             {
                 PValue = pValue,
+                ResultKey = resultKey,
             };
     }
 }

@@ -1,4 +1,6 @@
-﻿using Accord.Statistics.Testing;
+﻿using System.Linq;
+using Accord.Statistics.Distributions.Univariate;
+using Accord.Statistics.Testing;
 using HypothesisTesting.Domain;
 using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Statistics;
@@ -25,8 +27,10 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
 
             _executionLogger.AddLog(_translator.Translate(Constants.Translations.WilcoxonSignedRankTestMethod));
 
-            var w = new TwoSampleWilcoxonSignedRankTest(s1, s2, exact: true);
-            w.Size = inputData.Significance;
+            var w = new TwoSampleWilcoxonSignedRankTest(s1, s2)
+            {
+                Size = inputData.Significance,
+            };
 
             return w.PValue;
         }

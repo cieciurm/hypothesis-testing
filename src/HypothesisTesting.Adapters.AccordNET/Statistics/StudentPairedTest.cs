@@ -25,8 +25,10 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
 
             _executionLogger.AddLog(_translator.Translate(Constants.Translations.StudentPairedTestMethod));
 
-            var t = new PairedTTest(s1, s2);
-            t.Size = inputData.Significance;
+            var t = new PairedTTest(s1, s2)
+            {
+                Size = inputData.Significance
+            };
 
             return t.PValue;
         }

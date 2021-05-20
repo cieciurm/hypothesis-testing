@@ -22,7 +22,8 @@
   "StudentIndependentWithNotEqualVariancesTestMethod": "Student Test for 2 independent means with not equal variation",
   "StudentPairedTestMethod": "Student Test for 2 dependen meas",
   "WilcoxonSignedRankTestMethod": "The Wilcoxon Signed-Ranks Test",
-  "Result": "p-value: {0} => samples expected values equal: {1}",
+  "ExpectedValueResult": "p-value: {0} => samples expected values equal: {1}",
+  "SamePopulationResult": "p-value: {0} => samples belong to the same population: {1}",
 
   "Error": "Error",
   "ErrorIncorrectData": "Incorrect data",

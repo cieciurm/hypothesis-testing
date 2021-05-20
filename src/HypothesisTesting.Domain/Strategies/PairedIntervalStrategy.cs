@@ -1,5 +1,8 @@
-﻿using HypothesisTesting.Domain.Models;
+﻿using HypothesisTesting.Domain.Extensions;
+using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Statistics;
+using HypothesisTesting.Domain.Ports.Translations;
+using HypothesisTesting.Domain.Services;
 using static HypothesisTesting.Domain.Constants;
 
 namespace HypothesisTesting.Domain.Strategies
@@ -13,15 +16,21 @@ namespace HypothesisTesting.Domain.Strategies
         private readonly INormalDistributionTest _normalDistributionTest;
         private readonly IStudentPairedTest _studentPairedTest;
         private readonly IWilcoxonSignedRankTest _wilcoxonTest;
+        private readonly IExecutionLogger _executionLogger;
+        private readonly ITranslator _translator;
 
         public PairedIntervalStrategy(
             INormalDistributionTest normalDistributionTest,
             IStudentPairedTest studentPairedTest,
-            IWilcoxonSignedRankTest wilcoxonTest)
+            IWilcoxonSignedRankTest wilcoxonTest,
+            IExecutionLogger executionLogger,
+            ITranslator translator)
         {
             _normalDistributionTest = normalDistributionTest;
             _studentPairedTest = studentPairedTest;
             _wilcoxonTest = wilcoxonTest;
+            _executionLogger = executionLogger;
+            _translator = translator;
         }
 
         public OutputData Execute(InputData input)
@@ -30,16 +39,19 @@ namespace HypothesisTesting.Domain.Strategies
             var isYNormalDistribution = _normalDistributionTest.IsNormalDistribution(input.YValues, input.Significance);
 
             double pValue;
+            string resultKey;
             if (isXNormalDistribution && isYNormalDistribution)
             {
                 pValue = _studentPairedTest.Calculate(input);
+                resultKey = Translations.ExpectedValueResult;
             }
             else
             {
                 pValue = _wilcoxonTest.Calculate(input);
+                resultKey = Translations.SamePopulationResult;
             }
 
-            return OutputData.Success(pValue);
+            return OutputData.Success(pValue, resultKey);
         }
     }
 }

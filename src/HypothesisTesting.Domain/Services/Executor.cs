@@ -63,8 +63,12 @@ namespace HypothesisTesting.Domain.Services
             }
 
             var @true = _translator.Translate(HypothesisHelper.IsHypothesisTrue(outputData.PValue, inputData.Significance).ToString());
-            var resultLog = _translator.Translate(Constants.Translations.Result, outputData.PValue.Round(), @true);
-            _logger.AddLog(resultLog);
+
+            if (!string.IsNullOrWhiteSpace(outputData.ResultKey))
+            {
+                var resultLog = _translator.Translate(outputData.ResultKey, outputData.PValue.Round(), @true);
+                _logger.AddLog(resultLog);
+            }
         }
     }
 }

@@ -1,5 +1,8 @@
-﻿using HypothesisTesting.Domain.Models;
+﻿using HypothesisTesting.Domain.Extensions;
+using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Statistics;
+using HypothesisTesting.Domain.Ports.Translations;
+using HypothesisTesting.Domain.Services;
 
 namespace HypothesisTesting.Domain.Strategies
 {
@@ -20,7 +23,7 @@ namespace HypothesisTesting.Domain.Strategies
         {
             var pValue = _wilcoxonTest.Calculate(input);
 
-            return OutputData.Success(pValue);
+            return OutputData.Success(pValue, Constants.Translations.SamePopulationResult);
         }
     }
 }

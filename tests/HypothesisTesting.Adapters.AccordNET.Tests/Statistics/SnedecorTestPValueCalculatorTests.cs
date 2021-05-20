@@ -21,7 +21,7 @@ namespace HypothesisTesting.Adapters.AccordNET.Tests.Statistics
             var pValue = SnedecorTest.PValueCalculator.Calculate(f);
 
             // Assert
-            pValue.ShouldBe(expectedPValue, 0.0001);
+            pValue.ShouldBe(expectedPValue, TestConsts.Tolerance);
         }
 
         public static IEnumerable<object[]> Data => new List<object[]>

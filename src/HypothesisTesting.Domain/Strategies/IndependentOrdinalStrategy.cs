@@ -21,7 +21,7 @@ namespace HypothesisTesting.Domain.Strategies
         {
             var pValue = _mannWhitneyTest.Calculate(input);
 
-            return OutputData.Success(pValue);
+            return OutputData.Success(pValue, Translations.SamePopulationResult);
         }
     }
 }

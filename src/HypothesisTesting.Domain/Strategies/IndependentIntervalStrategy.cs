@@ -36,13 +36,13 @@ namespace HypothesisTesting.Domain.Strategies
             {
                 var mwPValue = _mannWhitneyTest.Calculate(input);
 
-                return OutputData.Success(mwPValue);
+                return OutputData.Success(mwPValue, Translations.SamePopulationResult);
             }
 
             var isVarianceEqual = _snedecorTest.IsVarianceEqual(input, input.Significance);
             var studentPValue = _studentTest.Calculate(input, isVarianceEqual);
 
-            return OutputData.Success(studentPValue);
+            return OutputData.Success(studentPValue, Translations.ExpectedValueResult);
         }
     }
 }
