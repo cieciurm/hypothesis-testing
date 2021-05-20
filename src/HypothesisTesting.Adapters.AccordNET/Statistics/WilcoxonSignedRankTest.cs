@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using Accord.Statistics.Distributions.Univariate;
-using Accord.Statistics.Testing;
+﻿using Accord.Statistics.Testing;
 using HypothesisTesting.Domain;
 using HypothesisTesting.Domain.Models;
 using HypothesisTesting.Domain.Ports.Statistics;
@@ -31,6 +29,8 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
             {
                 Size = inputData.Significance,
             };
+
+            _executionLogger.AddLog($"W={w.Statistic}");
 
             return w.PValue;
         }
