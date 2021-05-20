@@ -7,15 +7,19 @@ namespace HypothesisTesting.Domain.Strategies
     {
         public override string SampleType => Constants.SamplesTypes.Paired;
 
-        public PairedNominalStrategy(IContingencyMatrixCalculator contingencyMatrixCalculator)
+        private readonly IMcNemarTest _mcNemarTest;
+
+        public PairedNominalStrategy(IContingencyMatrixCalculator contingencyMatrixCalculator, IMcNemarTest mcNemarTest)
             : base(contingencyMatrixCalculator)
         {
+            _mcNemarTest = mcNemarTest;
         }
 
-        protected override OutputData Execute(int[,] contingencyMatrix)
+        protected override OutputData Execute(int[,] contingencyMatrix, double significance)
         {
-            // McNemar
-            return OutputData.Error();
+            var pValue = _mcNemarTest.Calculate(contingencyMatrix, significance);
+
+            return OutputData.Success(pValue);
         }
     }
 }

@@ -8,15 +8,19 @@ namespace HypothesisTesting.Domain.Strategies
     {
         public override string SampleType => SamplesTypes.Independent;
 
-        public IndependentNominalStrategy(IContingencyMatrixCalculator contingencyMatrixCalculator)
+        private readonly IFisherTest _fisherTest;
+
+        public IndependentNominalStrategy(IContingencyMatrixCalculator contingencyMatrixCalculator, IFisherTest fisherTest)
             : base(contingencyMatrixCalculator)
         {
+            _fisherTest = fisherTest;
         }
 
-        protected override OutputData Execute(int[,] contingencyMatrix)
+        protected override OutputData Execute(int[,] contingencyMatrix, double significance)
         {
-            // Fisher
-            return OutputData.Error();
+            var pValue = _fisherTest.Calculate(contingencyMatrix, significance);
+
+            return OutputData.Success(pValue);
         }
     }
 }
