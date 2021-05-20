@@ -16,13 +16,13 @@ namespace HypothesisTesting.Domain.Strategies
             _contingencyMatrixCalculator = contingencyMatrixCalculator;
         }
 
-        protected abstract OutputData Execute(int[,] contingencyMatrix);
+        protected abstract OutputData Execute(int[,] contingencyMatrix, double significance);
 
         public OutputData Execute(InputData input)
         {
             var contingencyMatrix = _contingencyMatrixCalculator.Calculate(input);
 
-            return Execute(contingencyMatrix);
+            return Execute(contingencyMatrix, input.Significance);
         }
     }
 }

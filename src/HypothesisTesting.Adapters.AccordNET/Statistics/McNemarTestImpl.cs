@@ -6,12 +6,12 @@ using HypothesisTesting.Domain.Services;
 
 namespace HypothesisTesting.Adapters.AccordNET.Statistics
 {
-    internal class FisherTest : IFisherTest
+    internal class McNemarTestImpl : IMcNemarTest
     {
         private readonly IExecutionLogger _executionLogger;
         private readonly ITranslator _translator;
 
-        public FisherTest(
+        public McNemarTestImpl(
             IExecutionLogger executionLogger,
             ITranslator translator)
         {
@@ -22,7 +22,7 @@ namespace HypothesisTesting.Adapters.AccordNET.Statistics
         public double Calculate(int[,] contingencyMatrix, double significance)
         {
             var confusionMatrix = new ConfusionMatrix(contingencyMatrix);
-            var fisher = new FisherExactTest(confusionMatrix)
+            var fisher = new McNemarTest(confusionMatrix)
             {
                 Size = significance
             };
