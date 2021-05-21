@@ -28,4 +28,6 @@ jobs:
       if: always()
       with:
         files: |
-          **/*.trx
+          tests/HypothesisTesting.Domain.Tests/TestResults/*.trx
+          tests/HypothesisTesting.Web.Tests/TestResults/*.trx
+          tests/HypothesisTesting.Adapters.AccordNET.Tests/TestResults/*.trx
